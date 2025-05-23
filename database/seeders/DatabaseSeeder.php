@@ -15,8 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'User',
             'email' => 'user@example,com',
@@ -24,5 +22,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('user123'),
             'remember_token' => Str::random(10),
         ]);
+
+        $this->call(KriteriaSeeder::class);
+        $this->call(SubKriteriaSeeder::class);
     }
 }

@@ -50,7 +50,7 @@
                </li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('sub-kriteria') }}">
                          <span class="nav-icon">
                               <iconify-icon icon="mdi:subdirectory-arrow-right"></iconify-icon>
                          </span>

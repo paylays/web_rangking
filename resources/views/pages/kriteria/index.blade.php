@@ -43,9 +43,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
+                    @forelse ($kriterias as $index => $item)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $item->kode }}</td>
+                            <td>{{ $item->nama_kriteria }}</td>
+                            <td>{{ number_format($item->bobot, 2) }}</td>
+                            <td>{{ ucfirst($item->jenis) }}</td>
+                            <td>
+                                <a href="#" class="text-info me-2" title="Detail">
+                                    <iconify-icon icon="solar:info-square-bold" class="fs-3"></iconify-icon>
+                                </a>
+                                <a href="#" class="text-warning me-2" title="Ubah">
+                                    <iconify-icon icon="solar:pen-new-square-bold" class="fs-3"></iconify-icon>
+                                </a>
+                                <a href="#" class="text-danger" title="Hapus">
+                                    <iconify-icon icon="solar:trash-bin-trash-bold" class="fs-3"></iconify-icon>
+                                </a>
+                            </td>
+
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">Belum ada data kriteria.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

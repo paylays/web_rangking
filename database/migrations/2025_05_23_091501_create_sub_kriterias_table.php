@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sub_kriterias', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kriteria_id')->constrained('kriterias')->onDelete('cascade');
-            $table->string('sub_kriteria');
+            $table->string('nama_sub_kriteria');
             $table->decimal('bobot', 8, 4);
             $table->timestamps();
         });
