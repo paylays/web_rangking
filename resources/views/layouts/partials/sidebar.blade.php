@@ -32,11 +32,11 @@
                <li class="menu-title">Data Master</li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('siswa') }}">
                          <span class="nav-icon">
                               <iconify-icon icon="mdi:account-school-outline"></iconify-icon>
                          </span>
-                         <span class="nav-text"> Data Siswa </span>
+                         <span class="nav-text"> Alternatif </span>
                     </a>
                </li>
 

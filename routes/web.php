@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SubKriteriaController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,11 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria');
     
     Route::get('/sub-kriteria', [SubKriteriaController::class, 'index'])->name('sub-kriteria');
+    
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::get('/siswa/template-download', [SiswaController::class, 'downloadTemplate'])->name('siswa.template-download');
+    Route::post('/siswa/import', [SiswaController::class, 'importExcel'])->name('siswa.import');
+
 });
 
 Route::fallback(function () {
