@@ -15,17 +15,17 @@ class SubKriteriaSeeder extends Seeder
     {
         $data = [
             'C1' => [
-                ['nama' => '< 60', 'bobot' => 0.1],
+                ['nama' => '< 60', 'bobot' => 0.2],
                 ['nama' => '60-69', 'bobot' => 0.4],
                 ['nama' => '70-79', 'bobot' => 0.6],
                 ['nama' => '80-89', 'bobot' => 0.8],
                 ['nama' => '≥ 90', 'bobot' => 1.0],
             ],
             'C2' => [
-                ['nama' => '< 75%', 'bobot' => 0.1],
+                ['nama' => '< 75%', 'bobot' => 0.2],
                 ['nama' => '75%-84%', 'bobot' => 0.4],
-                ['nama' => '85%-94%', 'bobot' => 0.7],
-                ['nama' => '95%-99%', 'bobot' => 0.9],
+                ['nama' => '85%-94%', 'bobot' => 0.6],
+                ['nama' => '95%-99%', 'bobot' => 0.8],
                 ['nama' => '100%', 'bobot' => 1.0],
             ],
             'C3' => [
