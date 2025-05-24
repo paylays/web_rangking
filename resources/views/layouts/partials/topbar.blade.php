@@ -50,22 +50,6 @@
                                         Account</span>
                               </a>
 
-                              <a class="dropdown-item" href="#">
-                                   <iconify-icon icon="solar:wallet-outline"
-                                        class="align-middle me-2 fs-18"></iconify-icon><span
-                                        class="align-middle">Pricing</span>
-                              </a>
-                              <a class="dropdown-item" href="#">
-                                   <iconify-icon icon="solar:help-outline"
-                                        class="align-middle me-2 fs-18"></iconify-icon><span
-                                        class="align-middle">Help</span>
-                              </a>
-                              <a class="dropdown-item" href="#">
-                                   <iconify-icon icon="solar:lock-keyhole-outline"
-                                        class="align-middle me-2 fs-18"></iconify-icon><span class="align-middle">Lock
-                                        screen</span>
-                              </a>
-
                               <div class="dropdown-divider my-1"></div>
 
                               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">

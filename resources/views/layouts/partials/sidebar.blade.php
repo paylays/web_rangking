@@ -61,7 +61,7 @@
                <li class="menu-title">Penilaian</li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('penilaian') }}">
                          <span class="nav-icon">
                               <iconify-icon icon="mdi:clipboard-edit-outline"></iconify-icon>
                          </span>
