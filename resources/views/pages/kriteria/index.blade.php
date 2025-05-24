@@ -46,7 +46,20 @@
                     @forelse ($kriterias as $index => $item)
                         <tr>
                             <td>{{ $index + 1 }}</td>
-                            <td>{{ $item->kode }}</td>
+                            @php
+                                $theme = session('theme', 'dark');
+                                $badgeColor = match($item->kode) {
+                                    'C1' => 'primary',
+                                    'C2' => 'secondary',
+                                    'C3' => 'success',
+                                    'C4' => 'danger',
+                                    'C5' => 'warning',
+                                    'C6' => $theme === 'light' ? 'light text-dark' : 'dark text-light',
+                                    default => 'primary',
+                                };
+                            @endphp
+
+                            <td><span class="badge bg-{{ $badgeColor }}">{{ $item->kode }}</span></td>
                             <td>{{ $item->nama_kriteria }}</td>
                             <td>{{ number_format($item->bobot, 2) }}</td>
                             <td>{{ ucfirst($item->jenis) }}</td>

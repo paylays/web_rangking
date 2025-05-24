@@ -32,15 +32,6 @@
                <li class="menu-title">Data Master</li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('siswa') }}">
-                         <span class="nav-icon">
-                              <iconify-icon icon="mdi:account-school-outline"></iconify-icon>
-                         </span>
-                         <span class="nav-text"> Alternatif </span>
-                    </a>
-               </li>
-
-               <li class="nav-item">
                     <a class="nav-link" href="{{ route('kriteria') }}">
                          <span class="nav-icon">
                               <iconify-icon icon="fluent:apps-list-detail-24-regular"></iconify-icon>
@@ -55,6 +46,15 @@
                               <iconify-icon icon="mdi:subdirectory-arrow-right"></iconify-icon>
                          </span>
                          <span class="nav-text"> Sub Kriteria </span>
+                    </a>
+               </li>
+
+               <li class="nav-item">
+                    <a class="nav-link" href="{{ route('siswa') }}">
+                         <span class="nav-icon">
+                              <iconify-icon icon="mdi:account-school-outline"></iconify-icon>
+                         </span>
+                         <span class="nav-text"> Alternatif </span>
                     </a>
                </li>
 

@@ -26,7 +26,9 @@ class PenilaianController extends Controller
         })->toArray();
 
         $fuzzyMatrix = FuzzyHelper::konversiFuzzy($dataSiswa);
+        $normalisasiMatrix = FuzzyHelper::normalisasiSaw($fuzzyMatrix);
+        $preferensiMatrix = FuzzyHelper::hitungPreferensiSaw($normalisasiMatrix);
 
-        return view('pages.penilaian.index', compact('fuzzyMatrix'));
+        return view('pages.penilaian.index', compact('fuzzyMatrix', 'normalisasiMatrix', 'preferensiMatrix'));
     }
 }

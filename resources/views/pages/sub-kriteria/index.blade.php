@@ -47,7 +47,22 @@
                             <tr>
                                 @if ($key === 0)
                                     <td rowspan="{{ count($group) }}">{{ $loop->parent->iteration }}</td>
-                                    <td rowspan="{{ count($group) }}">{{ $item->kriteria->kode }}</td>
+                                    @php
+                                        $theme = session('theme', 'dark');
+                                        $badgeClass = match($item->kriteria->kode) {
+                                            'C1' => 'primary',
+                                            'C2' => 'secondary',
+                                            'C3' => 'success',
+                                            'C4' => 'danger',
+                                            'C5' => 'warning',
+                                            'C6' => $theme === 'light' ? 'light text-dark' : 'dark text-light',
+                                            default => 'primary',
+                                        };
+                                    @endphp
+
+                                    <td rowspan="{{ count($group) }}">
+                                        <span class="badge bg-{{ $badgeClass }}">{{ $item->kriteria->kode }}</span>
+                                    </td>
                                 @endif
                                 <td>{{ $item->nama_sub_kriteria }}</td>
                                 <td>{{ number_format($item->bobot, 2) }}</td>

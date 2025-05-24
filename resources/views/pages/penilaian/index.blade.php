@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.partials/page-title', ['title' => 'Base UI', 'subtitle' => 'Penilaian'])
+@include('layouts.partials/page-title', ['title' => 'Web Ranking', 'subtitle' => 'Penilaian'])
 
 <div class="card">
     <div class="card-header">
@@ -46,16 +46,18 @@
                             Tabel Konversi Nilai Fuzzy
                         </h5>
                         <p class="card-subtitle">
-                            Menampilkan hasil konversi nilai data real alternatif ke nilai fuzzy.
+                            Tampilan hasil konversi nilai data real alternatif ke nilai fuzzy.
                         </p>
                     </div>
                     <div class="card-body">
+                        <div class="text-end mb-3">
+                            <small class="text-muted">Menampilkan {{ count($fuzzyMatrix) }} konversi nilai fuzzy</small>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-centered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Alternatif Siswa</th>
+                                        <th scope="col">Kode Siswa</th>
                                         <th scope="col">C1</th>
                                         <th scope="col">C2</th>
                                         <th scope="col">C3</th>
@@ -67,7 +69,6 @@
                                 <tbody>
                                     @forelse ($fuzzyMatrix as $index => $row)
                                         <tr>
-                                            <td>{{ $index + 1 }}</td>
                                             <td>{{ $row['kode_siswa'] }}</td>
                                             <td>{{ number_format($row['nilai_fuzzy']['C1'], 2) }}</td>
                                             <td>{{ number_format($row['nilai_fuzzy']['C2'], 2) }}</td>
@@ -84,18 +85,104 @@
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
             </div>
             <div class="tab-pane" id="normalisasiTab">
-                <p class="mb-0">Li Europan lingues es membres del sam familie. Lor separat existentie es un
-                    myth. Por scientie, musica, sport etc,
-                </p>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            Tabel Normalisasi Nilai
+                        </h5>
+                        <p class="card-subtitle">
+                            Nilai pada tabel ini merupakan hasil normalisasi dari nilai fuzzy setiap kriteria berdasarkan metode SAW. 
+                            Kriteria bertipe <strong>benefit</strong> dinormalisasi dengan membagi nilai dengan nilai maksimum, 
+                            sedangkan kriteria bertipe <strong>cost</strong> dinormalisasi dengan membagi nilai minimum dengan nilai tersebut.
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-end mb-3">
+                            <small class="text-muted">Menampilkan {{ count($normalisasiMatrix) }} hasil normalisasi</small>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-centered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Kode Siswa</th>
+                                        <th scope="col">C1</th>
+                                        <th scope="col">C2</th>
+                                        <th scope="col">C3</th>
+                                        <th scope="col">C4</th>
+                                        <th scope="col">C5</th>
+                                        <th scope="col">C6</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($normalisasiMatrix  as $index => $row)
+                                        <tr>
+                                            <td>{{ $row['kode_siswa'] }}</td>
+                                            <td>{{ number_format($row['nilai_normalisasi']['C1'], 2) }}</td>
+                                            <td>{{ number_format($row['nilai_normalisasi']['C2'], 2) }}</td>
+                                            <td>{{ number_format($row['nilai_normalisasi']['C3'], 2) }}</td>
+                                            <td>{{ number_format($row['nilai_normalisasi']['C4'], 2) }}</td>
+                                            <td>{{ number_format($row['nilai_normalisasi']['C5'], 2) }}</td>
+                                            <td>{{ number_format($row['nilai_normalisasi']['C6'], 2) }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="8" class="text-center text-muted">Belum ada hasil normalisasi.</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <div class="tab-pane" id="preferensiTab">
-                <p class="mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                    doloremque laudantium,
-                </p>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            Tabel Nilai Preferensi
+                        </h5>
+                        <p class="card-subtitle">
+                            Hasil perhitungan preferensi berdasarkan metode SAW (Simple Additive Weighting), 
+                            tanpa dilakukan proses perangkingan.
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-end mb-3">
+                            <small class="text-muted">Menampilkan {{ count($preferensiMatrix) }} hasil nilai preferensi</small>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-centered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Kode Siswa</th>
+                                        <th scope="col">Nama Siswa</th>
+                                        <th scope="col">Nilai Preferensi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($preferensiMatrix  as $index => $row)
+                                        <tr>
+                                            <td>{{ $row['kode_siswa'] }}</td>
+                                            <td>{{ $row['nama_siswa'] }}</td>
+                                            <td>{{ number_format($row['nilai_preferensi'], 4) }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="8" class="text-center text-muted">Belum ada nilai preferensi.</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
