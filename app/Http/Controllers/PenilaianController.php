@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FuzzyHelper;
-use App\Models\Kriteria;
 use App\Models\Siswa;
-use App\Models\SubKriteria;
-use Illuminate\Http\Request;
 
 class PenilaianController extends Controller
 {
-    public function konversiFuzzy()
+    public function penilaian()
     {
         $dataSiswa = Siswa::all()->map(function ($siswa) {
             return [

@@ -15,10 +15,6 @@
                         <label for="file_excel_siswa" class="form-label">Pilih File Excel</label>
                         <input type="file" class="form-control" id="file_excel_siswa" name="file_excel_siswa" required accept=".xlsx,.xls">
                     </div>
-
-                    @error('file')
-                        <div class="text-danger mt-1">{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>

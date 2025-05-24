@@ -21,10 +21,12 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('/sub-kriteria', [SubKriteriaController::class, 'index'])->name('sub-kriteria');
     
     Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::post('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
     Route::get('/siswa/template-download', [SiswaController::class, 'downloadTemplate'])->name('siswa.template-download');
     Route::post('/siswa/import', [SiswaController::class, 'importExcel'])->name('siswa.import');
+    Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 
-    Route::get('/penilaian', [PenilaianController::class, 'konversiFuzzy'])->name('penilaian');
+    Route::get('/penilaian', [PenilaianController::class, 'penilaian'])->name('penilaian');
     
     Route::get('/hasil-seleksi', [HasilSeleksiController::class, 'perankingan'])->name('ranking');
 });

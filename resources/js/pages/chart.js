@@ -4,9 +4,9 @@ window.ApexCharts= ApexCharts
 import moment from 'moment';
 
 
-(Apex.grid = { padding: { right: 0, left: 0 } }),
+    (Apex.grid = { padding: { right: 0, left: 0 } }),
     (Apex.dataLabels = { enabled: !1 });
-var randomizeArray = function (e) {
+    var randomizeArray = function (e) {
         for (var t, o, a = e.slice(), r = a.length; 0 !== r; )
             (o = Math.floor(Math.random() * r)),
                 (t = a[--r]),
