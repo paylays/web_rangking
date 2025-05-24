@@ -43,7 +43,7 @@
             <table class="table table-centered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Kode Siswa</th>
                         <th scope="col">Nama Siswa</th>
                         <th scope="col">Nilai Akademik</th>
                         <th scope="col">Kehadiran</th>
@@ -57,7 +57,7 @@
                 <tbody>
                     @forelse ($siswas as $index => $item)
                         <tr>
-                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $item->kode_siswa }}</td>
                             <td>{{ $item->nama_siswa }}</td>
                             <td>{{ $item->nilai_akademik }}</td>
                             <td>{{ $item->kehadiran }}</td>
