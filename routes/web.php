@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HasilSeleksiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\PenilaianController;
@@ -24,6 +25,8 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::post('/siswa/import', [SiswaController::class, 'importExcel'])->name('siswa.import');
 
     Route::get('/penilaian', [PenilaianController::class, 'konversiFuzzy'])->name('penilaian');
+    
+    Route::get('/hasil-seleksi', [HasilSeleksiController::class, 'perankingan'])->name('ranking');
 });
 
 Route::fallback(function () {

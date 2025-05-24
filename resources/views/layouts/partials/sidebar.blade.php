@@ -70,7 +70,7 @@
                </li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('ranking') }}">
                          <span class="nav-icon">
                               <iconify-icon icon="mdi:trophy-outline"></iconify-icon>
                          </span>

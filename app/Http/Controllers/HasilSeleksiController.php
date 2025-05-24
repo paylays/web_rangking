@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\FuzzyHelper;
-use App\Models\Kriteria;
 use App\Models\Siswa;
-use App\Models\SubKriteria;
-use Illuminate\Http\Request;
 
-class PenilaianController extends Controller
+class HasilSeleksiController extends Controller
 {
-    public function konversiFuzzy()
+    public function perankingan()
     {
+        // Ambil data siswa dan lakukan proses sebelumnya (konversi, normalisasi, preferensi)
         $dataSiswa = Siswa::all()->map(function ($siswa) {
             return [
                 'kode_siswa' => $siswa->kode_siswa,
@@ -30,6 +28,7 @@ class PenilaianController extends Controller
         $preferensiMatrix = FuzzyHelper::hitungPreferensiSaw($normalisasiMatrix);
         $rankingMatrix = FuzzyHelper::perankingan($preferensiMatrix);
 
-        return view('pages.penilaian.index', compact('fuzzyMatrix', 'normalisasiMatrix', 'preferensiMatrix', 'rankingMatrix'));
+        return view('pages.hasil-seleksi.index', compact('rankingMatrix'));
     }
+
 }

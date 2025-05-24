@@ -118,5 +118,18 @@ class FuzzyHelper
         return $preferensi;
     }
 
+    public static function perankingan(array $preferensiMatrix)
+    {
+        usort($preferensiMatrix, function($a, $b) {
+            return $b['nilai_preferensi'] <=> $a['nilai_preferensi'];
+        });
+
+        foreach ($preferensiMatrix as $index => &$item) {
+            $item['rank'] = $index + 1;
+        }
+
+        return $preferensiMatrix;
+    }
+
 
 }
