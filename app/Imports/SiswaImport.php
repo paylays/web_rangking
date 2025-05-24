@@ -17,11 +17,12 @@ class SiswaImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         try {
-            if (empty($row['nama_siswa'])) {
+            if (empty($row['kode_siswa'])) {
                 return null;
             }
 
             return new Siswa([
+                'kode_siswa' => $row['kode_siswa'],
                 'nama_siswa' => $row['nama_siswa'],
                 'nilai_akademik' => $row['nilai_akademik'],
                 'kehadiran' => $row['kehadiran'],
