@@ -19,16 +19,21 @@
                     </div>
 
                     @foreach (['C1', 'C2', 'C3', 'C4', 'C5', 'C6'] as $kode)
+                        @php
+                            $subList = $subkriterias[$kode] ?? collect();
+                            $namaKriteria = $subList->first()?->kriteria->nama_kriteria ?? 'Kriteria ' . $kode;
+                        @endphp
                         <div class="mb-3">
-                            <label>Subkriteria {{ $kode }}</label>
+                            <label>{{ $namaKriteria }}</label>
                             <select class="form-select" name="subkriteria[{{ $kode }}]">
                                 <option value="">-- Pilih --</option>
-                                @foreach ($subkriterias[$kode] ?? [] as $sub)
+                                @foreach ($subList as $sub)
                                     <option value="{{ $sub->id }}">{{ $sub->nama_sub_kriteria }}</option>
                                 @endforeach
                             </select>
                         </div>
                     @endforeach
+
                 </div>
 
                 <div class="modal-footer">
