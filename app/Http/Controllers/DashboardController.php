@@ -23,6 +23,6 @@ class DashboardController extends Controller
 
         $avgPreferensi = collect($preferensiMatrix)->avg('nilai_preferensi');
 
-        return view('index', compact('kriterias', 'subkriterias', 'siswas', 'fuzzyMatrix', 'normalisasiMatrix', 'preferensiMatrix', 'rankingMatrix', 'avgPreferensi'));
+        return view('dashboard', compact('kriterias', 'subkriterias', 'siswas', 'fuzzyMatrix', 'normalisasiMatrix', 'preferensiMatrix', 'rankingMatrix', 'avgPreferensi'));
     }
 }

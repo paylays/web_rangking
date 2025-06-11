@@ -22,14 +22,24 @@
         <h5 class="card-title">
             Tabel Hasil Seleksi
         </h5>
-        <p class="card-subtitle">
-            .......
+        <p class="card-subtitle mb-3">
+            Tabel ini menampilkan hasil akhir seleksi siswa berprestasi berdasarkan perhitungan metode SAW (Simple Additive Weighting). 
+            Nilai preferensi menunjukkan skor akhir setiap siswa setelah mempertimbangkan seluruh kriteria, 
+            dan peringkat menentukan urutan berdasarkan nilai tertinggi ke terendah.
         </p>
+        <div class="d-flex align-items-center gap-2">
+            <!-- App Search-->
+            <form class="app-search me-auto" onsubmit="return false;">
+                <div class="position-relative">
+                    <input type="search" class="form-control" placeholder="Cari hasil seleksi..." autocomplete="off" value="">
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-centered">
+            <table class="table table-centered" id="hasil-table">
                 <thead>
                     <tr>
                         <th scope="col">Kode Siswa</th>
@@ -72,3 +82,30 @@
 </div>
 
 @endsection
+
+@push('scripts')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.querySelector('.app-search input[type="search"]');
+        const table = document.getElementById('hasil-table');
+        const tbody = table.querySelector('tbody');
+        const rows = tbody.getElementsByTagName('tr');
+
+        searchInput.addEventListener('keyup', function () {
+            const filter = searchInput.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                const rowText = rows[i].textContent.toLowerCase();
+                if (rowText.indexOf(filter) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        });
+    });
+</script>
+
+
+@endpush

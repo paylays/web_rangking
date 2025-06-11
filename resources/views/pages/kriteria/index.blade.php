@@ -22,16 +22,24 @@
         <h5 class="card-title">
             Tabel Kriteria
         </h5>
-        <p class="card-subtitle">
+        <p class="card-subtitle mb-3">
             Daftar kriteria yang digunakan dalam proses penilaian siswa berprestasi. 
             Setiap kriteria memiliki bobot dan sifat (benefit atau cost) 
             yang akan digunakan dalam perhitungan metode SAW.
         </p>
+        <div class="d-flex align-items-center gap-2">
+            <!-- App Search-->
+            <form class="app-search me-auto" onsubmit="return false;">
+                <div class="position-relative">
+                    <input type="search" class="form-control" placeholder="Cari kriteria..." autocomplete="off" value="">
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-centered">
+            <table class="table table-centered" id="kriteria-table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -88,3 +96,30 @@
 </div>
 
 @endsection
+
+@push('scripts')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.querySelector('.app-search input[type="search"]');
+        const table = document.getElementById('kriteria-table');
+        const tbody = table.querySelector('tbody');
+        const rows = tbody.getElementsByTagName('tr');
+
+        searchInput.addEventListener('keyup', function () {
+            const filter = searchInput.value.toLowerCase();
+
+            for (let i = 0; i < rows.length; i++) {
+                const rowText = rows[i].textContent.toLowerCase();
+                if (rowText.indexOf(filter) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        });
+    });
+</script>
+
+
+@endpush

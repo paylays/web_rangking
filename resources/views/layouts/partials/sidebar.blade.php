@@ -1,14 +1,8 @@
 <div class="app-sidebar">
      <!-- Sidebar Logo -->
-     <div class="logo-box">
-          <a href="#" class="logo-dark">
-               <img src="/images/logo-sm.png" class="logo-sm" alt="logo sm">
-               <img src="/images/logo-dark.png" class="logo-lg" alt="logo dark">
-          </a>
-
-          <a href="#" class="logo-light">
-               <img src="/images/logo-sm.png" class="logo-sm" alt="logo sm">
-               <img src="/images/logo-light.png" class="logo-lg" alt="logo light">
+     <div class="logo-box text-center py-3">
+          <a href="{{ route('dashboard') }}" class="text-decoration-none">
+               <h5 class="text-white fw-bold m-0">SPK - Kelompok 1</h5>
           </a>
      </div>
 
@@ -25,7 +19,6 @@
                               <iconify-icon icon="mingcute:home-3-line"></iconify-icon>
                          </span>
                          <span class="nav-text"> Dashboard </span>
-                         <span class="badge bg-primary badge-pill text-end">03</span>
                     </a>
                </li>
 
@@ -66,6 +59,9 @@
                               <iconify-icon icon="mdi:clipboard-edit-outline"></iconify-icon>
                          </span>
                          <span class="nav-text"> Input Penilaian </span>
+                         @if ($jumlahHasilSeleksi > 0)
+                              <span class="badge bg-primary badge-pill text-end">{{ $jumlahHasilSeleksi }}</span>
+                         @endif
                     </a>
                </li>
 

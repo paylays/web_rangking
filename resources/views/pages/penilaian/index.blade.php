@@ -45,16 +45,24 @@
                         <h5 class="card-title">
                             Tabel Konversi Nilai Fuzzy
                         </h5>
-                        <p class="card-subtitle">
+                        <p class="card-subtitle mb-3">
                             Tampilan hasil konversi nilai data real alternatif ke nilai fuzzy.
                         </p>
+                        <div class="d-flex align-items-center gap-2">
+                            <!-- App Search-->
+                            <form class="app-search me-auto" onsubmit="return false;">
+                                <div class="position-relative">
+                                    <input type="search" class="form-control" placeholder="Cari di tabel..." autocomplete="off" value="">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="text-end mb-3">
                             <small class="text-muted">Menampilkan {{ count($fuzzyMatrix) }} konversi nilai fuzzy</small>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-centered">
+                            <table class="table table-centered" id="table-fuzzy">
                                 <thead>
                                     <tr>
                                         <th scope="col">Kode Siswa</th>
@@ -95,18 +103,26 @@
                         <h5 class="card-title">
                             Tabel Normalisasi Nilai
                         </h5>
-                        <p class="card-subtitle">
+                        <p class="card-subtitle mb-3">
                             Nilai pada tabel ini merupakan hasil normalisasi dari nilai fuzzy setiap kriteria berdasarkan metode SAW. 
                             Kriteria bertipe <strong>benefit</strong> dinormalisasi dengan membagi nilai dengan nilai maksimum, 
                             sedangkan kriteria bertipe <strong>cost</strong> dinormalisasi dengan membagi nilai minimum dengan nilai tersebut.
                         </p>
+                        <div class="d-flex align-items-center gap-2">
+                            <!-- App Search-->
+                            <form class="app-search me-auto" onsubmit="return false;">
+                                <div class="position-relative">
+                                    <input type="search" class="form-control" placeholder="Cari di tabel..." autocomplete="off" value="">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="text-end mb-3">
                             <small class="text-muted">Menampilkan {{ count($normalisasiMatrix) }} hasil normalisasi</small>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-centered">
+                            <table class="table table-centered" id="table-normalisasi">
                                 <thead>
                                     <tr>
                                         <th scope="col">Kode Siswa</th>
@@ -147,17 +163,25 @@
                         <h5 class="card-title">
                             Tabel Nilai Preferensi
                         </h5>
-                        <p class="card-subtitle">
+                        <p class="card-subtitle mb-3">
                             Hasil perhitungan preferensi berdasarkan metode SAW (Simple Additive Weighting), 
                             tanpa dilakukan proses perangkingan.
                         </p>
+                        <div class="d-flex align-items-center gap-2">
+                            <!-- App Search-->
+                            <form class="app-search me-auto" onsubmit="return false;">
+                                <div class="position-relative">
+                                    <input type="search" class="form-control" placeholder="Cari di tabel..." autocomplete="off" value="">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="text-end mb-3">
                             <small class="text-muted">Menampilkan {{ count($preferensiMatrix) }} hasil nilai preferensi</small>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-centered">
+                            <table class="table table-centered" id="table-preferensi">
                                 <thead>
                                     <tr>
                                         <th scope="col">Kode Siswa</th>
@@ -189,3 +213,29 @@
 </div>
 
 @endsection
+
+@push('scripts')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInputs = document.querySelectorAll('.app-search input[type="search"]');
+
+        searchInputs.forEach(function (input) {
+            input.addEventListener('keyup', function () {
+                const filter = input.value.toLowerCase();
+                const tabPane = input.closest('.tab-pane');
+                const table = tabPane.querySelector('table');
+                const rows = table.querySelectorAll('tbody tr');
+
+                rows.forEach(function (row) {
+                    const rowText = row.textContent.toLowerCase();
+                    row.style.display = rowText.includes(filter) ? '' : 'none';
+                });
+            });
+        });
+    });
+</script>
+
+
+
+@endpush

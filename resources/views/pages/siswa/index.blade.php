@@ -34,11 +34,19 @@
         <h5 class="card-title">
             Tabel Alternatif Siswa
         </h5>
-        <p class="card-subtitle">
+        <p class="card-subtitle mb-3">
             Daftar alternatif siswa yang menjadi kandidat penilaian. 
             Setiap siswa dinilai berdasarkan nilai sub-kriteria dari masing-masing kriteria utama, 
             yang kemudian digunakan dalam proses perhitungan menggunakan metode SAW (Simple Additive Weighting).
         </p>
+        <div class="d-flex align-items-center gap-2">
+            <!-- App Search-->
+            <form class="app-search me-auto" onsubmit="return false;">
+                <div class="position-relative">
+                    <input type="search" class="form-control" placeholder="Cari kriteria..." autocomplete="off" value="">
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="card-body">
@@ -59,7 +67,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-centered">
+            <table class="table table-centered" id="siswa-table">
                 <thead>
                     <tr>
                         <th scope="col">Kode Siswa</th>
@@ -134,6 +142,26 @@ document.querySelectorAll('a[data-bs-target="#deleteModal"]').forEach(btn => {
 
         const form = document.getElementById('deleteForm');
         form.action = `/siswa/${id}`; 
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('.app-search input[type="search"]');
+    const table = document.getElementById('siswa-table');
+    const tbody = table.querySelector('tbody');
+    const rows = tbody.getElementsByTagName('tr');
+
+    searchInput.addEventListener('keyup', function () {
+        const filter = searchInput.value.toLowerCase();
+
+        for (let i = 0; i < rows.length; i++) {
+            const rowText = rows[i].textContent.toLowerCase();
+            if (rowText.indexOf(filter) > -1) {
+                rows[i].style.display = '';
+            } else {
+                rows[i].style.display = 'none';
+            }
+        }
     });
 });
 </script>

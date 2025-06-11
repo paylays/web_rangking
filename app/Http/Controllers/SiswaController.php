@@ -13,7 +13,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $siswas = Siswa::orderBy('nama_siswa', 'asc')->get();
+        $siswas = Siswa::orderByRaw('CAST(SUBSTRING(kode_siswa, 2) AS UNSIGNED) ASC')->get();
 
         $subkriterias = SubKriteria::with('kriteria')->get()->groupBy(fn($item) => $item->kriteria->kode);
         

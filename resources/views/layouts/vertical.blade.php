@@ -30,6 +30,8 @@
 
     @include('layouts.partials/vendor-scripts')
 
+    @stack('scripts')
+
 </body>
 
 </html>

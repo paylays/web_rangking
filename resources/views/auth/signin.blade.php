@@ -12,8 +12,8 @@ class="authentication-bg"
                 <div class="card border-0 shadow-lg">
                     <div class="card-body p-5">
                         <div class="text-center">
-                            <h4 class="fw-bold text-dark mb-2">Welcome Back!</h3>
-                                <p class="text-muted">Sign in to your account to continue</p>
+                            <h4 class="fw-bold text-dark mb-2">Login ke Sistem SPK Siswa Berprestasi!</h3>
+                                <p class="text-muted">Gunakan akun Anda untuk mengakses fitur dan data seleksi siswa berprestasi berbasis metode SAW.</p>
                         </div>
                         <form method="POST" action="{{ route('login') }}" class="mt-4">
 
@@ -28,22 +28,21 @@ class="authentication-bg"
                             @endif
 
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" name="email" value="user@example.com" placeholder="Enter your email">
+                                <label for="email" class="form-label">Alamat Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="user@example.com" placeholder="Masukkan email Anda">
                             </div>
                             <div class="mb-3">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <label for="password" class="form-label">Password</label>
-                                    <a href="#" class="text-decoration-none small text-muted">Forgot password?</a>
+                                    <label for="password" class="form-label">Kata Sandi</label>
                                 </div>
-                                <input type="password" class="form-control" id="password" name="password" value="user123" placeholder="Enter your password">
+                                <input type="password" class="form-control" id="password" name="password" value="user123" placeholder="Masukkan kata sandi">
                             </div>
                             <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="remember-me">
-                                <label class="form-check-label" for="remember-me">Remember me</label>
+                                <label class="form-check-label" for="remember-me">Ingat saya</label>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-dark btn-lg fw-medium" type="submit">Sign In</button>
+                                <button class="btn btn-dark btn-lg fw-medium" type="submit">Masuk</button>
                             </div>
                         </form>
                     </div>
